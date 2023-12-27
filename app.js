@@ -6,19 +6,6 @@ const app = express();
 // This is the middleware
 app.use(express.json());
 
-/*
-app.get('/', (req, res) => {
-  res.status(404).json({
-    message: 'Hallo from the server side!!',
-    app: 'Natours',
-  });
-});
-
-app.post('/', (req, res) => {
-  res.send('You can PoST in this URL...');
-});
-*/
-
 const tours = JSON.parse(
   fs.readFileSync(`${__dirname}/dev-data/data/tours-simple.json`)
 );
