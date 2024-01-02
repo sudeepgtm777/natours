@@ -6,17 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sudeepgtm777/natours.git"
-  },
   "author": "Sudeep Gautam",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/sudeepgtm777/natours/issues"
-  },
-  "homepage": "https://github.com/sudeepgtm777/natours#readme",
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "morgan": "^1.10.0"
   }
 }
