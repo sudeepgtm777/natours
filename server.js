@@ -22,7 +22,7 @@ const tourSchema = new mongoose.Schema({
   name: {
     type: String,
     required: [true, 'A tour must have a Name!!'],
-    uniquer: true,
+    unique: true,
   },
   rating: {
     type: Number,
@@ -30,7 +30,7 @@ const tourSchema = new mongoose.Schema({
   },
   price: {
     type: Number,
-    required: [true, 'A tour must have a Value!!'],
+    required: [true, 'A tour must have a Price!!'],
   },
 });
 
@@ -38,10 +38,18 @@ const Tour = mongoose.model('Tour', tourSchema);
 
 // This is the instance of Tour model
 const testTour = new Tour({
-  name: 'The Forest Hiker',
-  rating: 4.9,
-  price: 447,
+  name: 'The House Of The Dragon',
+  rating: 9.5,
 });
+
+testTour
+  .save()
+  .then((doc) => {
+    console.log(doc);
+  })
+  .catch((err) => {
+    console.log('Error!!', err);
+  });
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
