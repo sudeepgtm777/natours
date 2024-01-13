@@ -28,14 +28,19 @@ exports.checkBody = (req, res, next) => {
 exports.getAllTours = async (req, res) => {
   try {
     console.log(req.query);
-    const tours = await Tour.find({
-      duration: 5,
-      difficulty: 'easy',
-    });
+    const tours = await Tour.find(req.query);
 
     /*-----------------------------------*\
      The above code also can be written as:
     \*-----------------------------------*/
+    /*Method:1*/
+    /*const tours = await Tour.find({
+      duration: 5,
+      difficulty: 'easy',
+    });
+    */
+
+    /*Method:2/
     /* const tours = await Tour.find()
       .where('duration')
       .equals(5)
