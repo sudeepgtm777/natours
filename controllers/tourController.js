@@ -27,12 +27,19 @@ exports.checkBody = (req, res, next) => {
 
 exports.getAllTours = async (req, res) => {
   try {
-    /*Build The Query*/
+    console.log(req.query);
+    //Build The Query
+    // 1) Filtering
     const queryObj = { ...req.query };
     const excludedFields = ['page', 'sort', 'limit', 'fields'];
     excludedFields.forEach((el) => delete queryObj[el]);
 
-    const query = await Tour.find(queryObj);
+    // 2) Advanced Filtering
+    let queryStr = JSON.stringify(queryObj);
+    queryStr = queryStr.replace(/\b(gte|gt|lte|lt)\b/g, (match) => `$${match}`);
+    console.log(JSON.parse(queryStr));
+
+    const query = await Tour.find(JSON.parse(queryStr));
 
     /*-----------------------------------*\
      The above code also can be written as:
@@ -52,10 +59,10 @@ exports.getAllTours = async (req, res) => {
       .equals('easy');
       */
 
-    /*Execute The Query*/
+    //Execute The Query
     const tours = await query;
 
-    /*Send Response*/
+    //Send Response
     res.status(200).json({
       status: 'success',
       results: tours.length,
