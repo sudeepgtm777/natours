@@ -27,30 +27,35 @@ exports.checkBody = (req, res, next) => {
 
 exports.getAllTours = async (req, res) => {
   try {
+    /*Build The Query*/
     const queryObj = { ...req.query };
     const excludedFields = ['page', 'sort', 'limit', 'fields'];
     excludedFields.forEach((el) => delete queryObj[el]);
 
-    const tours = await Tour.find(queryObj);
+    const query = await Tour.find(queryObj);
 
     /*-----------------------------------*\
      The above code also can be written as:
     \*-----------------------------------*/
     /*Method:1*/
-    /*const tours = await Tour.find({
+    /*const query = await Tour.find({
       duration: 5,
       difficulty: 'easy',
     });
     */
 
     /*Method:2/
-    /* const tours = await Tour.find()
+    /* const query = await Tour.find()
       .where('duration')
       .equals(5)
       .where('difficulty')
       .equals('easy');
       */
 
+    /*Execute The Query*/
+    const tours = await query;
+
+    /*Send Response*/
     res.status(200).json({
       status: 'success',
       results: tours.length,
