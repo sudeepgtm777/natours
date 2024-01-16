@@ -289,8 +289,17 @@ exports.getMonthlyPlan = async (req, res) => {
         $addFields: { month: '$_id' },
       },
       {
-        $sort: { _id: 1 },
+        $project: {
+          _id: 0, //This make id disappear from result
+        },
       },
+      {
+        // $sort: { _id: 1 },
+        $sort: { numTourStarts: -1 },
+      },
+      // {
+      //   $limit: 6, //The output will only have 6 document.
+      // },
     ]);
 
     res.status(200).json({
