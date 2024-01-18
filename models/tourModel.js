@@ -55,6 +55,10 @@ const tourSchema = new mongoose.Schema(
       select: false,
     },
     startDates: [Date],
+    secretTour: {
+      type: Boolean,
+      default: false,
+    },
   },
   {
     toJSON: { virtuals: true },
@@ -78,6 +82,25 @@ tourSchema.post('save', function (doc, next) {
   console.log(doc);
   next();
 });
+
+// Query Middleware
+
+// The find in below code makes it Query Middleware and not Document Middlweare
+// tourSchema.pre('find', function (next) { // It works only for find here
+// /^find/ This works for all the strigs that starts with find.
+tourSchema.pre(/^find/, function (next) {
+  this.find({ secretTour: { $ne: true } });
+
+  this.start = Date.now();
+  next();
+});
+
+tourSchema.post(/^find/, function (doc, next) {
+  // A way to calucate time taken from pre to post query using find.
+  console.log(`Query took ${Date.now() - this.start} milliseconds.`);
+  next();
+});
+
 const Tour = mongoose.model('Tour', tourSchema);
 
 module.exports = Tour;
