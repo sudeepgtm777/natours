@@ -8,6 +8,8 @@ const tourSchema = new mongoose.Schema(
       required: [true, 'A tour must have a Name!!'],
       unique: true,
       trim: true,
+      minlength: [8, 'A tour must have more or equal to 8 characters!!'],
+      maxlength: [40, 'A tour must have less or equal to 40 characters!!'],
     },
     slug: String,
     duration: {
@@ -25,6 +27,8 @@ const tourSchema = new mongoose.Schema(
     ratingsAverage: {
       type: Number,
       default: 4.5,
+      min: [1, 'Rating must be above 1.0'],
+      max: [5, 'Rating must be below 5.0'],
     },
     ratingsQuantity: {
       type: Number,
@@ -85,9 +89,9 @@ tourSchema.post('save', function (doc, next) {
 
 // Query Middleware
 
-// The find in below code makes it Query Middleware and not Document Middlweare
+// The find in below code makes it Query Middleware and not Document Middleware
 // tourSchema.pre('find', function (next) { // It works only for find here
-// /^find/ This works for all the strigs that starts with find.
+// /^find/ This works for all the strings that starts with find.
 tourSchema.pre(/^find/, function (next) {
   this.find({ secretTour: { $ne: true } });
 
@@ -96,7 +100,7 @@ tourSchema.pre(/^find/, function (next) {
 });
 
 tourSchema.post(/^find/, function (doc, next) {
-  // A way to calucate time taken from pre to post query using find.
+  // A way to Calculate time taken from pre to post query using find.
   console.log(`Query took ${Date.now() - this.start} milliseconds.`);
   next();
 });
