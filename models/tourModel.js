@@ -44,8 +44,13 @@ const tourSchema = new mongoose.Schema(
     },
     priceDiscount: {
       type: Number,
-      validate: function (val) {
-        return val < this.price;
+      validate: {
+        // Inside the validator function the this keyword points to current document
+        // while creating new document. This is not going to work on update.
+        validator: function (val) {
+          return val < this.price;
+        },
+        message: 'Discount price ({VALUE}) should be regular price!',
       },
     },
     summary: {
