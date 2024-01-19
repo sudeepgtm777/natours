@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const slugify = require('slugify');
+const validator = require('validator');
 
 const tourSchema = new mongoose.Schema(
   {
@@ -10,6 +11,8 @@ const tourSchema = new mongoose.Schema(
       trim: true,
       minlength: [8, 'A tour must have more or equal to 8 characters!!'],
       maxlength: [40, 'A tour must have less or equal to 40 characters!!'],
+      // This is not useful because it produces error with white spaces.
+      // validate: [validator.isAlpha, 'Tour name must only contain characters!!'],
     },
     slug: String,
     duration: {
@@ -47,6 +50,8 @@ const tourSchema = new mongoose.Schema(
       validate: {
         // Inside the validator function the this keyword points to current document
         // while creating new document. This is not going to work on update.
+
+        // This could also be done in array.
         validator: function (val) {
           return val < this.price;
         },
