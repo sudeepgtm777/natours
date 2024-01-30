@@ -160,27 +160,38 @@ exports.getTour = async (req, res) => {
   }
 };
 
-exports.createTour = async (req, res) => {
+const catchAsync = (fn) => {
+  return (req, res, next) => {
+    // This line of code gets rid of the catch block.
+    fn(req, res, next).catch(next);
+  };
+};
+
+exports.createTour = catchAsync(async (req, res, next) => {
+  const newTour = await Tour.create(req.body);
+
+  res.status(201).json({
+    status: 'success',
+    data: {
+      tour: newTour,
+    },
+  });
+
+  // There is no requirement of try catch block
+  // as it is done in the catchAsync function
+  /*
   try {
     // const newTour = new Tour({})
     // newTour.save()
-
     // Better way
-    const newTour = await Tour.create(req.body);
-
-    res.status(201).json({
-      status: 'success',
-      data: {
-        tour: newTour,
-      },
-    });
   } catch (err) {
     res.status(400).json({
       status: 'Fail',
       message: err,
     });
   }
-};
+  */
+});
 
 exports.upDateTour = async (req, res) => {
   try {
