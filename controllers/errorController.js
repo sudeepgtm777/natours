@@ -1,4 +1,7 @@
+const dotenv = require('dotenv');
 const AppError = require('./../utils/appError');
+
+dotenv.config({ path: './config.env' });
 
 const handleCastErrorDB = (err) => {
   const message = `Invalid ${err.path}: ${err.value}`;
@@ -16,6 +19,7 @@ const sendErrorDev = (err, res) => {
 
 const sendErrorProd = (err, res) => {
   // Operational, Trusted error: send message to client
+
   if (err.isOperational) {
     res.status(err.statusCode).json({
       status: err.status,
@@ -24,7 +28,7 @@ const sendErrorProd = (err, res) => {
 
     // Other unknown error: don't leak error details
   } else {
-    console.error('Error!!', err);
+    // console.error('Error!!', err);
 
     res.status(500).json({
       status: 'error',
@@ -37,14 +41,10 @@ module.exports = (err, req, res, next) => {
   err.statusCode = err.statusCode || 500;
   err.status = err.status || 'error';
 
-  console.log(process.env.NODE_ENV);
-
   if (process.env.NODE_ENV === 'development') {
     sendErrorDev(err, res);
   } else if (process.env.NODE_ENV === 'production') {
-    console.log(process.env.NODE_ENV);
     let error = { ...err };
-
     if (error.name === 'CastError') error = handleCastErrorDB(error);
     sendErrorProd(error, res);
   }
