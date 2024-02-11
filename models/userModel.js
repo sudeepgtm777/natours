@@ -36,9 +36,15 @@ const userSchema = new mongoose.Schema({
 });
 
 userSchema.pre('save', async function (next) {
+  // Run this if password was modified!!
   if (!this.isModified('password')) return next();
 
+  // Match the password with cost of 10
   this.password = await bcrypt.hash(this.password, 10);
+
+  // Delete the password confirm field!!
+  this.passwordConfirm = undefined;
+  next();
 });
 
 const User = mongoose.model('User', userSchema);
