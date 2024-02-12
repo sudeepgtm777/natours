@@ -28,6 +28,7 @@ exports.login = (req, res, next) => {
   const { email, password } = req.body;
 
   // 1) Check if the email and password exit
+
   if (!email || !password) {
     next(new AppError('Please provide email and password', 400));
   }
@@ -35,4 +36,9 @@ exports.login = (req, res, next) => {
   // 2) Check if user exits & password is correct
 
   // 3) If everything ok, send token to the client
+  const token = '';
+  res.status(200).json({
+    status: 'success',
+    token,
+  });
 };
