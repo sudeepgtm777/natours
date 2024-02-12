@@ -30,7 +30,7 @@ exports.login = (req, res, next) => {
   // 1) Check if the email and password exit
 
   if (!email || !password) {
-    next(new AppError('Please provide email and password', 400));
+    return next(new AppError('Please provide email and password', 400));
   }
 
   // 2) Check if user exits & password is correct
