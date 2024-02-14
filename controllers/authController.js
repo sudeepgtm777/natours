@@ -75,6 +75,10 @@ exports.protect = catchAsync(async (req, res, next) => {
   const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
 
   // 3) Check if the user still exit
+  const freshUser = await User.findById(decoded.id);
+  if (!freshUser) {
+    return next(new AppError('The user to this token does not exit!!!', 401));
+  }
 
   // 4) Check if user changed the password after token was issued
 
