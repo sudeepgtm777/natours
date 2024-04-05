@@ -110,6 +110,10 @@ exports.restrictTo = (...roles) => {
   };
 };
 
-exports.forgotPassword = (req, res, next) => {};
+exports.forgotPassword = (req, res, next) => {
+  //  1)  Get user based on posted email
+  //  2)  Generate the random reset token
+  // 3) Send it to user's email
+};
 
 exports.resetPassword = (req, res, next) => {};
