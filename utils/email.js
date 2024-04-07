@@ -12,6 +12,13 @@ const sendEmail = (options) => {
   });
 
   // 2) Define the email options
+  const mailOptions = {
+    from: 'Sudeep Gtm <sudeep@123.io>',
+    to: options.email,
+    subject: options.subject,
+    text: options.message,
+    // html: conversion is done of the text
+  };
 
   // 3) Actually send the email
 };
