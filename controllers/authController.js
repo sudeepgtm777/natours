@@ -16,7 +16,7 @@ const signToken = (id) => {
 const createAndSendToken = (user, statusCode, res) => {
   const token = signToken(user._id);
 
-  res.status(statuscode).json({
+  res.status(statusCode).json({
     status: 'success',
     token,
     data: {
@@ -185,7 +185,7 @@ exports.updatePassword = catchAsync(async (req, res, next) => {
   const user = await User.findById(req.user.id).select('+password');
 
   // 2) check if posted current paswword is correct
-  if (!user.correctPassword(req.body.passwordConfirm, user.password)) {
+  if (!user.correctPassword(req.body.passwordCurrent, user.password)) {
     return next(new AppError('Your current password is wrong', 401));
   }
 
