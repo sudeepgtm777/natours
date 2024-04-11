@@ -76,6 +76,12 @@ userSchema.pre('save', function (next) {
   next();
 });
 
+userSchema.pre(/^find/, function (next) {
+  // This points to the current query that is there. It simply runs before any query with .find()
+  this.find({ active: { $ne: false } });
+  next();
+});
+
 userSchema.methods.changesPasswordAfter = function (JWTTimestamp) {
   if (this.passwordChangedAt) {
     const changedTimeStamp = parseInt(
