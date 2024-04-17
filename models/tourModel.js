@@ -158,6 +158,14 @@ tourSchema.pre(/^find/, function (next) {
   next();
 });
 
+tourSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: 'guides',
+    select: '-__v -passwordChangedAt',
+  });
+  next();
+});
+
 tourSchema.post(/^find/, function (doc, next) {
   // A way to Calculate time taken from pre to post query using find.
   console.log(`Query took ${Date.now() - this.start} milliseconds.`);
