@@ -17,3 +17,7 @@ const reviewSchema = new moongose.Schema({
     default: Date.now,
   },
 });
+
+const Review = moongose.model('Review', reviewSchema);
+
+module.exports = Review;
