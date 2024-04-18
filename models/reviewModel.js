@@ -16,6 +16,11 @@ const reviewSchema = new moongose.Schema({
     type: Date,
     default: Date.now,
   },
+  tour: {
+    type: moongose.Schema.ObjectId,
+    ref: 'Tour',
+    required: [true, 'Review must be associated with tour'],
+  },
 });
 
 const Review = moongose.model('Review', reviewSchema);
