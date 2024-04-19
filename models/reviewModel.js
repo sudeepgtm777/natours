@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const reviewSchema = new moongose.Schema(
+const reviewSchema = new mongoose.Schema(
   {
     review: {
       type: String,
@@ -19,13 +19,13 @@ const reviewSchema = new moongose.Schema(
     },
 
     tour: {
-      type: moongose.Schema.ObjectId,
+      type: mongoose.Schema.ObjectId,
       ref: 'Tour',
       required: [true, 'Review must be associated with tour'],
     },
 
     user: {
-      type: moongose.Schema.ObjectId,
+      type: mongoose.Schema.ObjectId,
       ref: 'User',
       required: [true, 'Review must be associated with user'],
     },
@@ -36,6 +36,6 @@ const reviewSchema = new moongose.Schema(
   },
 );
 
-const Review = moongose.model('Review', reviewSchema);
+const Review = mongoose.model('Review', reviewSchema);
 
 module.exports = Review;
