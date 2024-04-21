@@ -37,10 +37,19 @@ const reviewSchema = new mongoose.Schema(
 );
 
 reviewSchema.pre(/^find/, function (next) {
+  /******* This is used for getting data of both tour and user from id ********/
+  /*
   this.populate({
     path: 'tour',
     select: 'name',
   }).populate({
+    path: 'user',
+    select: 'photo user',
+  });
+  */
+
+  /******* This is used for getting data of  user from id  and only id from tour********/
+  this.populate({
     path: 'user',
     select: 'photo user',
   });
