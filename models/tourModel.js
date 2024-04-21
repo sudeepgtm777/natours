@@ -113,12 +113,6 @@ const tourSchema = new mongoose.Schema(
         ref: 'User',
       },
     ],
-    reviews: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Review',
-      },
-    ],
   },
   {
     toJSON: { virtuals: true },
@@ -131,13 +125,12 @@ tourSchema.virtual('durationWeeks').get(function () {
 });
 
 // This is a virtual populate
-/*
+
 tourSchema.virtual('reviews', {
   ref: 'Review',
-  foreignField: 'product',
+  foreignField: 'tour',
   localField: '_id',
- });
- */
+});
 
 // Document Middleware
 // It runs before the .save() and .create() but not insertMany()
