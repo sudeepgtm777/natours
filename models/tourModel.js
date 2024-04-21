@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const slugify = require('slugify');
-// const User = require('./userModel');
+const User = require('./userModel');
 // const validator = require('validator');
 
 const tourSchema = new mongoose.Schema(
@@ -113,6 +113,12 @@ const tourSchema = new mongoose.Schema(
         ref: 'User',
       },
     ],
+    reviews: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Review',
+      },
+    ],
   },
   {
     toJSON: { virtuals: true },
@@ -125,11 +131,11 @@ tourSchema.virtual('durationWeeks').get(function () {
 });
 
 // This is a virtual populate
-tourSchema.virtual('reviews', {
-  ref: 'Review',
-  foreignField: 'tour',
-  localField: '_id',
-});
+// tourSchema.virtual('reviews', {
+//   ref: 'Review',
+//   foreignField: 'product',
+//   localField: '_id',
+// });
 
 // Document Middleware
 // It runs before the .save() and .create() but not insertMany()
