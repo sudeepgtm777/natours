@@ -131,11 +131,13 @@ tourSchema.virtual('durationWeeks').get(function () {
 });
 
 // This is a virtual populate
-// tourSchema.virtual('reviews', {
-//   ref: 'Review',
-//   foreignField: 'product',
-//   localField: '_id',
-// });
+/*
+tourSchema.virtual('reviews', {
+  ref: 'Review',
+  foreignField: 'product',
+  localField: '_id',
+ });
+ */
 
 // Document Middleware
 // It runs before the .save() and .create() but not insertMany()
