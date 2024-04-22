@@ -30,12 +30,4 @@ router
   .patch(userController.updateUser)
   .delete(userController.deleteUser);
 
-router
-  .route('/:tourId/reviews')
-  .post(
-    authController.protect,
-    authController.restrictTo('users'),
-    reviewController.createReview,
-  );
-
 module.exports = router;
