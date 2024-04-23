@@ -1,9 +1,13 @@
 const express = require('express');
 const tourController = require('./../controllers/tourController');
 const authController = require('./../controllers/authController');
-const reviewController = require('./../controllers/reviewController');
+const reviewRouter = require('./../routes/reviewRoute');
 
 const router = express.Router();
+
+// POST /tour/abcde123/reviews
+// GET /tour/abcde123/reviews
+router.use('/:tourId/reviews', reviewRouter);
 
 // This is the use of param to define middleware
 // router.param('id', tourController.checkID);
@@ -28,14 +32,6 @@ router
     authController.protect,
     authController.restrictTo('admin', 'lead-guide', 'user'),
     tourController.deleteTour,
-  );
-
-router
-  .route('/:tourId/reviews')
-  .post(
-    authController.protect,
-    authController.restrictTo('user'),
-    reviewController.createReview,
   );
 
 module.exports = router;
