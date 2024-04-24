@@ -70,12 +70,7 @@ exports.getUser = (req, res) => {
   });
 };
 
-exports.createUser = (req, res) => {
-  res.status(500).json({
-    status: 'error',
-    message: 'This route is not yet defined',
-  });
-};
+/****** There is no need to make one fore createUser as we signup for that purpose. *******/
 
 /****** The use of factory model to update User. *******/
 exports.updateUser = factory.updateOne(User);
