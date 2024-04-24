@@ -73,6 +73,7 @@ exports.getUser = (req, res) => {
 /****** There is no need to make one fore createUser as we signup for that purpose. *******/
 
 /****** The use of factory model to update User. *******/
+// Do not update password with this
 exports.updateUser = factory.updateOne(User);
 
 /****** The use of factory model to delete User. *******/
