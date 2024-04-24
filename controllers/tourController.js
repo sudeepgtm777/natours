@@ -153,6 +153,11 @@ exports.getTour = catchAsync(async (req, res, next) => {
   });
 });
 
+/****** The use of factory model to create Tour. *******/
+exports.createTour = factory.createOne(Tour);
+
+/****** This is the basic way of creating a Tour *******/
+/*
 exports.createTour = catchAsync(async (req, res, next) => {
   const newTour = await Tour.create(req.body);
 
@@ -165,19 +170,18 @@ exports.createTour = catchAsync(async (req, res, next) => {
 
   // There is no requirement of try catch block
   // as it is done in the catchAsync function
-  /*
-  try {
-    // const newTour = new Tour({})
-    // newTour.save()
-    // Better way
-  } catch (err) {
-    res.status(400).json({
-      status: 'Fail',
-      message: err,
-    });
-  }
-  */
+  // try {
+  //   // const newTour = new Tour({})
+  //   // newTour.save()
+  //   // Better way
+  // } catch (err) {
+  //   res.status(400).json({
+  //     status: 'Fail',
+  //     message: err,
+  //   });
+  // }
 });
+*/
 
 /****** The use of factory model to update Tour. *******/
 exports.upDateTour = factory.updateOne(Tour);
