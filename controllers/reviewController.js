@@ -34,5 +34,8 @@ exports.createReview = catchAsync(async (req, res, next) => {
   });
 });
 
+/****** The use of factory model to update Review. *******/
+exports.updateReview = factory.updateOne(Review);
+
 /****** The use of factory model to delete Review. *******/
 exports.deleteReview = factory.deleteOne(Review);
