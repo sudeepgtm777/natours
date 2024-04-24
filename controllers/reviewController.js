@@ -18,6 +18,12 @@ exports.getAllReviews = catchAsync(async (req, res, next) => {
   });
 });
 
+exports.setTourUserIds = (req, res, next) => {
+  // Allow nested routes
+  if (!req.body.tour) req.body.tour = req.params.tourId;
+  if (!req.body.user) req.body.user = req.user.id;
+};
+
 /****** The use of factory model to create Review. *******/
 exports.createReview = factory.createOne(Review);
 
