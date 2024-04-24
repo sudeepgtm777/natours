@@ -179,6 +179,7 @@ exports.createTour = catchAsync(async (req, res, next) => {
   */
 });
 
+/****** The use of factory model to update Tour. *******/
 exports.upDateTour = factory.updateOne(Tour);
 
 /****** The use of factory model to delete Tour. *******/
