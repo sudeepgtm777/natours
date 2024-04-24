@@ -77,12 +77,8 @@ exports.createUser = (req, res) => {
   });
 };
 
-exports.updateUser = (req, res) => {
-  res.status(500).json({
-    status: 'error',
-    message: 'This route is not yet defined',
-  });
-};
+/****** The use of factory model to update User. *******/
+exports.updateUser = factory.updateOne(User);
 
 /****** The use of factory model to delete User. *******/
 exports.deleteUser = factory.deleteOne(User);
