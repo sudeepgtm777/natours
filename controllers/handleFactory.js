@@ -36,12 +36,12 @@ exports.updateOne = (Model) =>
 
 exports.createOne = (Model) =>
   catchAsync(async (req, res, next) => {
-    const newDoc = await Model.create(req.body);
+    const doc = await Model.create(req.body);
 
     res.status(201).json({
       status: 'success',
       data: {
-        Model: newDoc,
+        data: doc,
       },
     });
   });
