@@ -13,18 +13,8 @@ const filterObj = (obj, ...allowedFields) => {
   return newObj;
 };
 
-exports.getAllUsers = catchAsync(async (req, res, next) => {
-  const users = await User.find();
-
-  //Send Response
-  res.status(200).json({
-    status: 'success',
-    results: users.length,
-    data: {
-      users,
-    },
-  });
-});
+/****** The use of factory model to getAllUser. *******/
+exports.getAllUsers = factory.getAll(User);
 
 exports.updateMe = catchAsync(async (req, res, next) => {
   // 1) Create Error if user Post password
