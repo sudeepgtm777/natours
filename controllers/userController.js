@@ -13,8 +13,10 @@ const filterObj = (obj, ...allowedFields) => {
   return newObj;
 };
 
-/****** The use of factory model to getAllUser. *******/
-exports.getAllUsers = factory.getAll(User);
+exports.getMe = (req, res, next) => {
+  req.params.id = req.user.id;
+  next();
+};
 
 exports.updateMe = catchAsync(async (req, res, next) => {
   // 1) Create Error if user Post password
@@ -52,6 +54,8 @@ exports.deleteMe = catchAsync(async (req, res, next) => {
     data: null,
   });
 });
+/****** The use of factory model to getAllUser. *******/
+exports.getAllUsers = factory.getAll(User);
 
 /****** The use of factory model to getUser. *******/
 exports.getUser = factory.getOne(User);
