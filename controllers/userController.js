@@ -63,10 +63,13 @@ exports.deleteMe = catchAsync(async (req, res, next) => {
   });
 });
 
+/****** The use of factory model to getUser. *******/
+exports.getUser = factory.getOne(User);
+
 exports.getUser = (req, res) => {
   res.status(500).json({
     status: 'error',
-    message: 'This route is not yet defined',
+    message: 'This route is not yet defined Please use signup Instead!!',
   });
 };
 
