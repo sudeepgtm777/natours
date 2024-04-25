@@ -137,6 +137,11 @@ exports.getAllTours = catchAsync(async (req, res, next) => {
   });
 });
 
+/****** The use of factory model to create Tour. *******/
+exports.getTour = factory.getOne(Tour, { path: 'reviews' });
+
+/****** This is the use of getTour before combining it in handleFactory *******/
+/*
 exports.getTour = catchAsync(async (req, res, next) => {
   const tour = await Tour.findById(req.params.id).populate('reviews');
   // This code is similar to Tour.findOne({ _id: req.params.id})
@@ -152,6 +157,7 @@ exports.getTour = catchAsync(async (req, res, next) => {
     },
   });
 });
+*/
 
 /****** The use of factory model to create Tour. *******/
 exports.createTour = factory.createOne(Tour);
