@@ -25,6 +25,9 @@ exports.setTourUserIds = (req, res, next) => {
   next();
 };
 
+/****** The use of factory model to get Review. *******/
+exports.createReview = factory.getOne(Review);
+
 /****** The use of factory model to create Review. *******/
 exports.createReview = factory.createOne(Review);
 
