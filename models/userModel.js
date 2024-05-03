@@ -50,17 +50,24 @@ const userSchema = new mongoose.Schema({
   },
 });
 
-userSchema.pre('save', async function (next) {
-  // Run this if password was modified!!
-  if (!this.isModified('password')) return next();
+// userSchema.pre('save', async function (next) {
+//   // Run this if password was modified!!
+//   if (!this.isModified('password')) return next();
 
-  // Match the password with cost of 10
-  this.password = await bcrypt.hash(this.password, 10);
+//   // Match the password with cost of 10
+//   this.password = await bcrypt.hash(this.password, 10);
 
-  // Delete the password confirm field!!
-  this.passwordConfirm = undefined;
-  next();
-});
+//   // Delete the password confirm field!!
+//   this.passwordConfirm = undefined;
+//   next();
+// });
+
+// userSchema.pre('save', function (next) {
+//   if (!this.isModified('password') || this.isNew) return next();
+
+//   this.passwordChangedAt = Date.now() - 1000;
+//   next();
+// });
 
 userSchema.methods.correctPassword = async function (
   candiatePassword,
@@ -68,13 +75,6 @@ userSchema.methods.correctPassword = async function (
 ) {
   return await bcrypt.compare(candiatePassword, userPassword);
 };
-
-userSchema.pre('save', function (next) {
-  if (!this.isModified('password') || this.isNew) return next();
-
-  this.passwordChangedAt = Date.now() - 1000;
-  next();
-});
 
 userSchema.pre(/^find/, function (next) {
   // This points to the current query that is there. It simply runs before any query with .find()
