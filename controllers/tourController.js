@@ -295,3 +295,7 @@ exports.getMonthlyPlan = catchAsync(async (req, res, next) => {
     },
   });
 });
+
+exports.getToursWithin = (req, res, next) => {
+  const { distance, center, unit } = req.params;
+};
