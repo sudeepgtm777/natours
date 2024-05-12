@@ -16,7 +16,7 @@ const reviewRouter = require('./routes/reviewRoute');
 const app = express();
 
 app.set('view engine', 'pug');
-app.set('views', '');
+app.set('views', path.join(__dirname, 'views'));
 
 // 1. Middleware
 // Set Security HTTP header
@@ -59,7 +59,7 @@ app.use(
 );
 
 // Serving static files
-app.use(express.static(`${__dirname}/public`));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Test middleware
 app.use((req, res, next) => {
