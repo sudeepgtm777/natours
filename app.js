@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
 const rateLimit = require('express-rate-limit');
@@ -15,6 +16,7 @@ const reviewRouter = require('./routes/reviewRoute');
 const app = express();
 
 app.set('view engine', 'pug');
+app.set('views', '');
 
 // 1. Middleware
 // Set Security HTTP header
