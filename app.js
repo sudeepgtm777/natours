@@ -18,6 +18,9 @@ const app = express();
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 
+// Serving static files
+app.use(express.static(path.join(__dirname, 'public')));
+
 // 1. Middleware
 // Set Security HTTP header
 app.use(helmet());
@@ -57,9 +60,6 @@ app.use(
     ],
   }),
 );
-
-// Serving static files
-app.use(express.static(path.join(__dirname, 'public')));
 
 // Test middleware
 app.use((req, res, next) => {
