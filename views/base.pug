@@ -16,9 +16,25 @@ html
             .header__logo
                 img(src='img/logo-white.png' alt='*Natours Logo*')
             nav.nav.nav--user
-               a.nav__el(href='#') My Bookings
-               a.nav__el(href='#') My Bookings
-                    img.nav__user-img(src='img/iser.jpg' alt='User Photo')
-                    span Sudeep
+            //-    a.nav__el(href='#') My Bookings
+            //-    a.nav__el(href='#') My Bookings
+            //-         img.nav__user-img(src='img/iser.jpg' alt='User Photo')
+            //-         span Sudeep
                 button.nav__el Login
                 button.nav__el.nav__el--cta Sign Up
+
+        // CONTENT
+        section.overview
+            h1= tour
+
+        // FOOTER
+        footer.footer
+            .footer__logo
+                img(src='img/logo-green.png' alt='Natour Logo')
+            ul.footer__nav
+                li: a(href='#') About Us
+                li: a(href='#') Downlad app
+                li: a(href='#') Become a guide
+                li: a(href='#') Carrers
+                li: a(href='#') Contact
+            p.footer__copyright &copy: @Course
