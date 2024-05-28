@@ -10,20 +10,12 @@ html
 
     body
         // HEADER
-        
+        include _header
+
 
         // CONTENT
         section.overview
             h1= tour
 
         // FOOTER
-        footer.footer
-            .footer__logo
-                img(src='img/logo-green.png' alt='Natour Logo')
-            ul.footer__nav
-                li: a(href='#') About Us
-                li: a(href='#') Downlad app
-                li: a(href='#') Become a guide
-                li: a(href='#') Carrers
-                li: a(href='#') Contact
-            p.footer__copyright &copy: @Course
+        include _footer
