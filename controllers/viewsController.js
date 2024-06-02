@@ -13,9 +13,10 @@ exports.getOverview = catchAsync(async (req, res, next) => {
     title: 'All Tours',
     tours,
   });
+  // next();
 });
 
-exports.getTour = catchAsync(async (req, res, next) => {
+exports.getTour = catchAsync(async (req, res) => {
   // 1) Get all the  data from the collection for requsted tour(Reviews and Guides)
   const tour = await Tour.findOne({ slug: req.params.slug }).populate({
     path: 'reviews',
@@ -26,5 +27,4 @@ exports.getTour = catchAsync(async (req, res, next) => {
     title: `${tour.name} Tour`,
     tour,
   });
-  next();
 });
