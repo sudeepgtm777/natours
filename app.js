@@ -24,7 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // 1. Middleware
 // Set Security HTTP header
-app.use(helmet());
+app.use(helmet({ contentSecurityPolicy: false }));
 
 // Development mode
 if (process.env.NODE_ENV === 'development') {
