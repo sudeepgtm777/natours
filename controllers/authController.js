@@ -108,6 +108,36 @@ exports.protect = catchAsync(async (req, res, next) => {
   next();
 });
 
+// The use of isLoggedIn middleware is for rendered page so there will not be any error.
+exports.isLoggedIn = catchAsync(async (req, res, next) => {
+  // 1) Get the token and check if it exit
+  let token;
+
+  if (req.cookies.jwt) {
+    // 1) Verify the token
+    const decoded = await promisify(jwt.verify)(
+      req.cookies.jwt,
+      process.env.JWT_SECRET,
+    );
+
+    // 2) Check if the user still exit
+    const currentUser = await User.findById(decoded.id);
+    if (!currentUser) {
+      return next();
+    }
+
+    // 3) Check if user changed the password after token was issued
+    if (currentUser.changesPasswordAfter(decoded.iat)) {
+      return next();
+    }
+
+    // There is a user that is currently logged in!!
+    res.locals.user = currentUser;
+    next();
+  }
+  next();
+});
+
 // eslint-disable-next-line arrow-body-style
 exports.restrictTo = (...roles) => {
   return (req, res, next) => {
