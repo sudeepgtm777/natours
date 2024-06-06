@@ -69,6 +69,14 @@ exports.login = catchAsync(async (req, res, next) => {
   createAndSendToken(user, 200, res);
 });
 
+exports.logout = (req, res) => {
+  res.cookie('jwt', 'logout', {
+    expires: new Date(Date.now() + 10 * 1000),
+    httpOnly: true,
+  });
+  res.status(200).json({ status: 'success' });
+};
+
 exports.protect = catchAsync(async (req, res, next) => {
   // 1) Get the token and check if it exit
   let token;
@@ -109,34 +117,35 @@ exports.protect = catchAsync(async (req, res, next) => {
 });
 
 // The use of isLoggedIn middleware is for rendered page so there will not be any error.
-exports.isLoggedIn = catchAsync(async (req, res, next) => {
-  // 1) Get the token and check if it exit
-  let token;
-
+exports.isLoggedIn = async (req, res, next) => {
   if (req.cookies.jwt) {
-    // 1) Verify the token
-    const decoded = await promisify(jwt.verify)(
-      req.cookies.jwt,
-      process.env.JWT_SECRET,
-    );
+    try {
+      // 1) Verify the token
+      const decoded = await promisify(jwt.verify)(
+        req.cookies.jwt,
+        process.env.JWT_SECRET,
+      );
 
-    // 2) Check if the user still exit
-    const currentUser = await User.findById(decoded.id);
-    if (!currentUser) {
+      // 2) Check if the user still exit
+      const currentUser = await User.findById(decoded.id);
+      if (!currentUser) {
+        return next();
+      }
+
+      // 3) Check if user changed the password after token was issued
+      if (currentUser.changesPasswordAfter(decoded.iat)) {
+        return next();
+      }
+
+      // There is a user that is currently logged in!!
+      res.locals.user = currentUser;
+      return next();
+    } catch (err) {
       return next();
     }
-
-    // 3) Check if user changed the password after token was issued
-    if (currentUser.changesPasswordAfter(decoded.iat)) {
-      return next();
-    }
-
-    // There is a user that is currently logged in!!
-    res.locals.user = currentUser;
-    return next();
   }
   next();
-});
+};
 
 // eslint-disable-next-line arrow-body-style
 exports.restrictTo = (...roles) => {
