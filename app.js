@@ -68,7 +68,10 @@ app.use(
 // Test middleware
 app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();
-  console.log(req.cookies);
+
+  /****** This shows the cookie that is being used as Id for identifying *******/
+  // console.log(req.cookies);
+
   next();
 });
 
