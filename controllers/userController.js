@@ -4,6 +4,16 @@ const multer = require('multer');
 const AppError = require('./../utils/appError');
 const factory = require('./handleFactory');
 
+const multerStorage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'public/img/users');
+  },
+  filename: (req, file, cb) => {
+    const extension = file.mimetype.split('/')[1];
+    cb(null, `user-${req.user.id}-${Date.now()}.${extension}`);
+  },
+});
+
 const upload = multer({ dest: 'public/img/users' });
 exports.uploadUserPhoto = upload.single('photo');
 
