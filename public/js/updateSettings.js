@@ -15,7 +15,7 @@ export const updateSettings = async (data, type) => {
       data,
     });
 
-    if (res.data.status == 'success') {
+    if (res.data.status == 'Success' || 'success') {
       showAlert('success', `${type} Updated Successfully!!`);
     }
   } catch (err) {
