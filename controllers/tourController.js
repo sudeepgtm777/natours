@@ -20,10 +20,16 @@ const upload = multer({
   fileFilter: multerFilter,
 });
 
+/**** For different file upload ****/
 exports.uploadTourImages = upload.fields([
   { name: 'ImageCover', maxCount: 1 },
   { name: 'images', maxCount: 3 },
 ]);
+/**** For single image upload ****/
+// upload.single('image')
+
+/**** For multiple images upload ****/
+// upload.array('images')
 
 exports.aliasTopTours = (req, res, next) => {
   req.query.limit = '5';
