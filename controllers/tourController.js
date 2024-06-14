@@ -22,7 +22,7 @@ const upload = multer({
 
 /**** For different file upload ****/
 exports.uploadTourImages = upload.fields([
-  { name: 'ImageCover', maxCount: 1 },
+  { name: 'imageCover', maxCount: 1 },
   { name: 'images', maxCount: 3 },
 ]);
 /**** For single image upload ****/
@@ -231,7 +231,7 @@ exports.upDateTour = factory.updateOne(Tour);
 /****** The use of factory model to delete Tour. *******/
 exports.deleteTour = factory.deleteOne(Tour);
 
-/****** This is the refrence on how to delete Tour without the use of model *******/
+/****** This is the reference on how to delete Tour without the use of model *******/
 /*
 exports.deleteTour = catchAsync(async (req, res, next) => {
   const tour = await Tour.findByIdAndDelete(req.params.id);
