@@ -52,7 +52,7 @@ exports.resizeTourImages = catchAsync(async (req, res, next) => {
       const fileName = `tour-${req.params.id}-${Date.now()}-${i + 1}.jpeg`;
 
       await sharp(file.buffer)
-        .resize(500, 500)
+        .resize(2000, 1333)
         .toFormat('jpeg')
         .jpeg({ quality: 90 })
         .toFile(`public/img/tours/${fileName}`);
