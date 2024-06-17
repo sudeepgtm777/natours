@@ -58,4 +58,9 @@ module.exports = class Email {
   async sendWelcome() {
     await this.send('Welcome', 'Welcome to the natours!!');
   }
+
+  async sendPasswordReset() {
+    // prettier-ignore
+    await this.send('passwordReset', 'Your password reset token(Valid for only 5 minutes)');
+  }
 };
