@@ -1,5 +1,5 @@
 const dotenv = require('dotenv');
-const AppError = require('./../utils/appError');
+const AppError = require('../utils/appError');
 
 dotenv.config({ path: './config.env' });
 

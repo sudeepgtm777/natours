@@ -1,8 +1,8 @@
-const User = require('./../models/userModel');
-const catchAsync = require('./../utils/catchAsync');
+const User = require('../models/userModel');
+const catchAsync = require('../utils/catchAsync');
 const multer = require('multer');
 const sharp = require('sharp');
-const AppError = require('./../utils/appError');
+const AppError = require('../utils/appError');
 const factory = require('./handleFactory');
 
 /*****  Use of multer storage is no longer necessary as we save image in memory. *****/
