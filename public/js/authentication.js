@@ -56,8 +56,8 @@ export const logout = async () => {
     // This doesn't work sometimes so using assign.
     // if ((res.data.status = 'success')) location.reload(true);
     console.log(res);
-    console.log(response.data.status);
-    if (response.data.status === 'success') {
+    console.log(res.data.status);
+    if (res.data.status === 'success') {
       console.log('Run tw vaxa?');
       location.assign('/login');
     }
