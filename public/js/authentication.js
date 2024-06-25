@@ -49,18 +49,13 @@ export const signup = async (name, email, password, passwordConfirm) => {
 
 export const logout = async () => {
   try {
-    const res = await axios({
+    const response = await axios({
       method: 'GET',
       url: '/api/v1/users/logout',
     });
     // This doesn't work sometimes so using assign.
-    // if ((res.data.status = 'success')) location.reload(true);
-    console.log(res);
-    console.log(res.data.status);
-    if (res.data.status === 'success') {
-      console.log('Run tw vaxa?');
-      location.assign('/login');
-    }
+    // if ((response.data.status = 'success')) location.reload(true);
+    if (response.data.status === 'success') location.assign('/login');
   } catch (err) {
     console.log(err);
     showAlert('error', 'Error logging out try again!!');
