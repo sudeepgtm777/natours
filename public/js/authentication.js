@@ -55,7 +55,7 @@ export const logout = async () => {
     });
     // This doesn't work sometimes so using assign.
     // if ((res.data.status = 'success')) location.reload(true);
-    if (response.data.status === 'success') location.assign('/login');
+    if (response.data.status == 'success') location.assign('/login');
   } catch (err) {
     console.log(err);
     showAlert('error', 'Error logging out try again!!');
