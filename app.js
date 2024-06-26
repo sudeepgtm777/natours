@@ -8,6 +8,7 @@ const xss = require('xss-clean');
 const hpp = require('hpp');
 const cookieParser = require('cookie-parser');
 const compression = require('compression');
+const cors = require('cors');
 
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
@@ -21,6 +22,24 @@ const app = express();
 
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
+
+// Implementing CORS
+app.use(cors());
+// The use of cors() is implemented in Api.
+
+// It can be used in specif route only too. app.use('/api/v1/tours', cors(), tourRouter);
+// The cors()  is used for only tours route in above route.
+
+// Access Control Allow Origin
+// app.use(cors(){
+//   origin: 'https://natours.com'
+// })
+// api.natours.com frontend: natours.com
+//  This will allow https://natours.com to create requests at api.natours.com.
+
+app.options('*', cors());
+// app.options('/api/v1/tours/:id', cors());
+// The preflight phase can also be used for specific route.
 
 // Serving static files
 app.use(express.static(path.join(__dirname, 'public')));
