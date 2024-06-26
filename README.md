@@ -21,52 +21,52 @@ Natours is a website for the Travel industry. The user can select a tour and boo
 
 <h3>• User Authentication and Authorization: </h3>
 
-**→ Signup and Login:** Users can create accounts and log in using JWT (JSON Web Tokens) for authentication.
+**→ Signup and Login:** Users can create accounts and log in using JWT (JSON Web Tokens) for authentication.<br>
 **→ Password Reset:** Functionality for users to reset their passwords via email.
 
 <h3>• Tour Management: </h3>
 
-**→ CRUD Operations:** Create, read, update, and delete tours.
-**→ Tour Features:** Include details such as duration, difficulty, price, summary, description, start dates, and more.
+**→ CRUD Operations:** Create, read, update, and delete tours.<br>
+**→ Tour Features:** Include details such as duration, difficulty, price, summary, description, start dates, and more.<br>
 **→ Tour Reviews:** Users can add and manage reviews for tours.
 
 <h3>• Booking System: </h3>
 
-**→ Tour Booking:** Users can book tours.
+**→ Tour Booking:** Users can book tours.<br>
 **→ Stripe Integration:** Payment processing using the Stripe API.
 
 <h3>• Advanced Querying and Filtering: </h3>
 
-**→ Sorting, Filtering, and Pagination:** Implemented for tours based on various criteria.
+**→ Sorting, Filtering, and Pagination:** Implemented for tours based on various criteria.<br>
 **→ Aggregation:** MongoDB aggregation framework for advanced data processing.
 
 <h3>• Geospatial Queries: </h3>
 
-**→ Geolocation:** Finding tours within a certain distance from a point.
+**→ Geolocation:** Finding tours within a certain distance from a point.<br>
 **→ Map Integration:** Displaying tours on a map using third-party services.
 
 <h3>• Security and Performance: </h3>
 
-**→Data Sanitization:** Preventing NoSQL injection and other vulnerabilities.
-**→Rate Limiting:** Limiting the number of requests from a single IP.
-**→Helmet:** Setting security-related HTTP headers.
+**→Data Sanitization:** Preventing NoSQL injection and other vulnerabilities.<br>
+**→Rate Limiting:** Limiting the number of requests from a single IP.<br>
+**→Helmet:** Setting security-related HTTP headers.<br>
 **→Compression:** Compressing responses to improve performance.
 
 ## Technologies Used
 
-• Node.js: JavaScript runtime for building server-side applications.
-• Express: Web framework for Node.js, providing robust features for building APIs.
-• MongoDB: NoSQL database for storing tour, user, and booking data.
-• Mongoose: ODM (Object Data Modeling) library for MongoDB and Node.js.
-• Pug: High performance template engine.
-• JWT: JSON Web Tokens for user authentication.
-• Postman: API testing
-• Stripe: Payment processing for handling tour bookings.
-• Mailtrap: Email delivery platform
-• Email Services: Nodemailer and third-party email services for sending emails.
-• Vercel: Cloud platform
-• esbuild: An extremely fast bundler for the web
-• Other Libraries: Various npm packages for validation, security, and utility functions
+**• Node.js:** JavaScript runtime for building server-side applications.<br>
+**• Express:** Web framework for Node.js, providing robust features for building APIs.<br>
+**• MongoDB:** NoSQL database for storing tour, user, and booking data.<br>
+**• Mongoose:** ODM (Object Data Modeling) library for MongoDB and Node.js.<br>
+**• Pug:** High performance template engine.<br>
+**• JWT:** JSON Web Tokens for user authentication.<br>
+**• Postman:** API testing.<br>
+**• Stripe:** Payment processing for handling tour bookings.<br>
+**• Mailtrap:** Email delivery platform.<br>
+**• Email Services:** Nodemailer and third-party email services for sending emails.<br>
+**• Vercel:** Cloud platform<br>
+**• esbuild:** An extremely fast bundler for the web.<br>
+**• Other Libraries:** Various npm packages for validation, security, and utility functions.<br>
 
 ## How To Use
 
@@ -76,20 +76,20 @@ Natours is a website for the Travel industry. The user can select a tour and boo
 - Search for tours that you want to book
 - Book a tour
 - Proceed to the payment
-- Enter the card details (Test Mode):
-  • Card No. : 4242 4242 4242 4242
-  • Expiry date: Any Future date
+- Enter the card details (Test Mode):<br>
+  • Card No. : 4242 4242 4242 4242<br>
+  • Expiry date: Any Future date<br>
   • CVV: Any
 - Finished!
 - You can add other tour to your bookings.
 
 ### Manage your booking
 
-- You can manage all the bookings you have done by visiting your profile and **My bookings**.
+You can manage all the bookings you have done by visiting your profile and **My bookings**.
 
 ### Update your profile
 
-- You can update your own username, profile photo, email and password.
+You can update your own username, profile photo, email and password.
 
 ## Deployment
 
