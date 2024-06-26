@@ -19,33 +19,33 @@ Natours is a website for the Travel industry. The user can select a tour and boo
 
 ## Key Features
 
-<h1>• User Authentication and Authorization: </h1>
+<h4>• User Authentication and Authorization: </h4>
 
 **→ Signup and Login:** Users can create accounts and log in using JWT (JSON Web Tokens) for authentication.
 **→ Password Reset:** Functionality for users to reset their passwords via email.
 
-<h1>• Tour Management: </h1>
+<h4>• Tour Management: </h4>
 
 **→ CRUD Operations:** Create, read, update, and delete tours.
 **→ Tour Features:** Include details such as duration, difficulty, price, summary, description, start dates, and more.
 **→ Tour Reviews:** Users can add and manage reviews for tours.
 
-<h1>• Booking System: </h1>
+<h4>• Booking System: </h4>
 
 **→ Tour Booking:** Users can book tours.
 **→ Stripe Integration:** Payment processing using the Stripe API.
 
-<h1>• Advanced Querying and Filtering: </h1>
+<h4>• Advanced Querying and Filtering: </h4>
 
 **→ Sorting, Filtering, and Pagination:** Implemented for tours based on various criteria.
 **→ Aggregation:** MongoDB aggregation framework for advanced data processing.
 
-<h1>• Geospatial Queries: </h1>
+<h4>• Geospatial Queries: </h4>
 
 **→ Geolocation:** Finding tours within a certain distance from a point.
 **→ Map Integration:** Displaying tours on a map using third-party services.
 
-<h1>• Security and Performance: </h1>
+<h4>• Security and Performance: </h4>
 
 **→Data Sanitization:** Preventing NoSQL injection and other vulnerabilities.
 **→Rate Limiting:** Limiting the number of requests from a single IP.
