@@ -58,6 +58,7 @@ Natours is a website for the Travel industry. The user can select a tour and boo
 **• Express:** Web framework for Node.js, providing robust features for building APIs.<br>
 **• MongoDB:** NoSQL database for storing tour, user, and booking data.<br>
 **• Mongoose:** ODM (Object Data Modeling) library for MongoDB and Node.js.<br>
+**• Maptiler:** The use of maps to create high-quality world maps.<br>
 **• Pug:** High performance template engine.<br>
 **• JWT:** JSON Web Tokens for user authentication.<br>
 **• Postman:** API testing.<br>
@@ -100,14 +101,12 @@ The website is deployed with the help of vercel(Cloud Platform).
 You can fork the app or you can git-clone the app into your local machine. Once done that, please install all the
 dependencies by running
 
-<div>
-$ npm i
-set your env variables
-$ npm run watch:js(for building files:This will allow to build js files in background.)(You can build the js files using npm run build:js after completing the project.)
-$ npm run dev (for development)
-$ npm run start (for production)
-$ npm run debug (for debug)
-</div>
+npm i <br>
+set your env variables <br>
+npm run watch:js(for building files:This will allow to build js files in background.)(You can build the js files using npm run build:js after completing the project.) <br>
+npm run dev (for development) <br>
+npm run start (for production)<br>
+npm run debug (for debug)
 
 ## Known Bugs
 
@@ -116,3 +115,23 @@ If found any bug, You may try to solve it or inform me. Thank you!
 ## Acknowledgement
 
 The project is part of the online course at Udemy. Thanks to [Jonas Schmedtmann](https://twitter.com/jonasschmedtman) for creating this course!
+
+## Screenshots
+
+**Home Page**
+![Home Page Natours ](/public/img/homepage.png)
+
+**Signup**
+![Signup Natours ](/public/img/signup.png)
+
+**Login**
+![Login Natours ](/public/img/login.png)
+
+**Profile**
+![Profile Natours ](/public/img/user.png)
+
+**Tour**
+![Tour Natours ](/public/img/tour.png)
+
+**Payment**
+![Payment Natours ](/public/img/payment.png)
