@@ -77,6 +77,7 @@ exports.logout = (req, res) => {
     maxAge: 1,
     httpOnly: true,
   });
+  res.redirect('/);
   res.status(200).json({ status: 'success' });
 };
 
